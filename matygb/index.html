@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habitos GB — Rastreador de Hábitos</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">●</span>
+      <div>
+        <h1>Habitos GB</h1>
+        <p class="brand-tagline">Crea tus Habitos, día a día</p>
+      </div>
+    </div>
+    <div class="header-stats" id="header-stats">
+      <div class="stat">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Hábitos</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-hoy">0</span>
+        <span class="stat-label">Hechos hoy</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <section class="panel form-panel" aria-labelledby="form-titulo">
+      <h2 id="form-titulo">Nuevo Habito</h2>
+      <p class="panel-subtitle">Define qué quieres hacer y con qué frecuencia.</p>
+
+      <form id="habito-form" novalidate>
+
+        <div class="field">
+          <label for="nombre">Nombre del hábito</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ej: Leer 20 minutos"
+            autocomplete="off"
+          />
+          <p class="error-message" id="error-nombre" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="categoria">Categoría</label>
+          <select id="categoria" name="categoria">
+            <option value="">Selecciona una categoría</option>
+            <option value="salud">Salud</option>
+            <option value="estudio">Estudio</option>
+            <option value="trabajo">Trabajo</option>
+            <option value="personal">Personal</option>
+          </select>
+          <p class="error-message" id="error-categoria" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="frecuencia">Frecuencia</label>
+          <select id="frecuencia" name="frecuencia">
+            <option value="">Selecciona una frecuencia</option>
+            <option value="diaria">Diaria</option>
+            <option value="semanal">Semanal</option>
+          </select>
+          <p class="error-message" id="error-frecuencia" role="alert"></p>
+        </div>
+
+        <div class="field" id="dias-semana-field">
+          <label for="diasPorSemana">Días por semana</label>
+          <input
+            type="number"
+            id="diasPorSemana"
+            name="diasPorSemana"
+            placeholder="Entre 1 y 6"
+            min="1"
+            max="6"
+            disabled
+          />
+          <p class="field-hint">Solo aplica si la frecuencia es semanal.</p>
+          <p class="error-message" id="error-diasPorSemana" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="fechaInicio">Fecha de inicio</label>
+          <input type="date" id="fechaInicio" name="fechaInicio" />
+          <p class="error-message" id="error-fechaInicio" role="alert"></p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-guardar">Agregar hábito</button>
+          <button type="button" id="btn-cancelar-edicion" class="btn-secondary" hidden>
+            Cancelar edición
+          </button>
+        </div>
+
+        <p class="form-feedback" id="form-feedback" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel list-panel" aria-labelledby="lista-titulo">
+      <div class="list-panel-header">
+        <h2 id="lista-titulo">Mis hábitos</h2>
+        <div class="filter-group">
+          <label for="filtro-categoria" class="sr-only">Filtrar por categoría</label>
+          <select id="filtro-categoria">
+            <option value="todas">Todas las categorías</option>
+            <option value="salud">Salud</option>
+            <option value="estudio">Estudio</option>
+            <option value="trabajo">Trabajo</option>
+            <option value="personal">Personal</option>
+          </select>
+        </div>
+      </div>
+
+      <ul id="lista-habitos" class="habit-list"></ul>
+
+      <p class="empty-state" id="empty-state">
+        Aún no registras hábitos. Crea el primero usando el formulario.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>HABITOS SOLO PARA GARREROS · GB </p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
